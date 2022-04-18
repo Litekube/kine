@@ -3,10 +3,6 @@ package endpoint
 import (
 	"context"
 	"fmt"
-	"net"
-	"os"
-	"strings"
-
 	"github.com/k3s-io/kine/pkg/drivers/dqlite"
 	"github.com/k3s-io/kine/pkg/drivers/generic"
 	"github.com/k3s-io/kine/pkg/drivers/mysql"
@@ -21,6 +17,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/keepalive"
+	"net"
+	"os"
+	"strings"
 )
 
 const (

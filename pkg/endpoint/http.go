@@ -11,7 +11,9 @@ import (
 
 var (
 	etcdVersion = []byte(`{"etcdserver":"3.5.0","etcdcluster":"3.5.0"}`)
+	etcdHealthz = []byte(`{"health":"true"}`)
 	versionPath = "/version"
+	healthzPath = "/health"
 )
 
 // httpServer returns a HTTP server with the basic mux handler.
@@ -19,7 +21,6 @@ func httpServer() *http.Server {
 	// Set up root HTTP mux with basic response handlers
 	mux := http.NewServeMux()
 	handleBasic(mux)
-
 	return &http.Server{
 		Handler:  mux,
 		ErrorLog: log.New(logrus.StandardLogger().Writer(), "kinehttp ", log.LstdFlags),
@@ -29,6 +30,7 @@ func httpServer() *http.Server {
 // handleBasic binds basic HTTP response handlers to a mux.
 func handleBasic(mux *http.ServeMux) {
 	mux.HandleFunc(versionPath, serveVersion)
+	mux.HandleFunc(healthzPath, serveHealthz)
 }
 
 // serveVersion responds with a canned JSON version response.
@@ -38,6 +40,15 @@ func serveVersion(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(etcdVersion)
+}
+
+// serveHealthz responds with a canned JSON healthz response.
+func serveHealthz(w http.ResponseWriter, r *http.Request) {
+	if !allowMethod(w, r, http.MethodGet) {
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(etcdHealthz)
 }
 
 // allowMethod returns true if a method is allowed, or false (after sending a
