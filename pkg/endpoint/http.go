@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	etcdVersion = []byte(`{"etcdserver":"3.5.0","etcdcluster":"3.5.0"}`)
+	etcdVersion = []byte(`{"etcdserver":"3.5.0","etcdcluster":"3.5.0","litekube-modification": true}`)
 	etcdHealth  = []byte(`{"health":"true"}`)
 	versionPath = "/version"
 	healthzPath = "/health"
