@@ -1,3 +1,4 @@
+//go:build cgo
 // +build cgo
 
 package sqlite
@@ -5,7 +6,9 @@ package sqlite
 import (
 	"context"
 	"database/sql"
+	"fmt"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/k3s-io/kine/pkg/drivers/generic"
@@ -50,11 +53,17 @@ func New(ctx context.Context, dataSourceName string, connPoolConfig generic.Conn
 
 func NewVariant(ctx context.Context, driverName, dataSourceName string, connPoolConfig generic.ConnectionPoolConfig) (server.Backend, *generic.Generic, error) {
 	if dataSourceName == "" {
-		if err := os.MkdirAll("./db", 0700); err != nil {
-			return nil, nil, err
-		}
-		dataSourceName = "./db/state.db?_journal=WAL&cache=shared"
+		dataSourceName = "/"
 	}
+
+	// create path
+	dataSourceName = filepath.Join(dataSourceName, "db/")
+	if err := os.MkdirAll(dataSourceName, 0700); err != nil {
+		return nil, nil, err
+	}
+
+	dataSourceName = filepath.Join(dataSourceName, "state.db?_journal=WAL&cache=shared")
+	fmt.Println(dataSourceName)
 
 	dialect, err := generic.Open(ctx, driverName, dataSourceName, connPoolConfig, "?", false)
 	if err != nil {
