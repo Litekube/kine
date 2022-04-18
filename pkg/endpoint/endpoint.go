@@ -250,6 +250,8 @@ func ParseStorageEndpoint(storageEndpoint string) (string, string) {
 		fallthrough
 	case "https":
 		return ETCDBackend, address
+	case "sqlite:":
+		return SQLiteBackend, address
 	}
 	return network, address
 }
