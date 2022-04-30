@@ -8,6 +8,42 @@ supporting the [acceptance of K3s as a CNCF sandbox project](https://github.com/
 
 Kine is an etcdshim that translates etcd API to sqlite, Postgres, Mysql, and dqlite
 
+## run
+* HTTP
+
+  * start server
+    ```shell
+    ./kine-server --listen-address="0.0.0.0:2379"
+    ```
+  
+  * validate
+  
+    ```shell
+    curl http://{host_ip}:2379/version
+    
+    # get
+    {"etcdserver":"3.5.0","etcdcluster":"3.5.0"}
+    ```
+
+* HTTPS
+
+  * install cfssl，refer to [script](scripts/install-cfssl.sh)
+
+  * generate certificates，refer to [script](scripts/generate-kine-cert.sh)
+
+  * start server
+    ```shell
+    ./kine-server --listen-address="0.0.0.0:2379" --server-cert-file=kine-cert/server.pem  --server-key-file=kine-cert/server-key.pem
+    ```
+
+  * validate
+
+    ```shell
+    curl -k https://{host_ip}:2379/version --cert kine-cert/client.pem --key kine-cert/client-key.pem
+    
+    # get
+    {"etcdserver":"3.5.0","etcdcluster":"3.5.0"}
+
 ## Features
 - Can be ran standalone so any k8s (not just k3s) can use Kine
 - Implements a subset of etcdAPI (not usable at all for general purpose etcd)
