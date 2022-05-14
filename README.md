@@ -27,9 +27,9 @@ Kine is an etcdshim that translates etcd API to sqlite, Postgres, Mysql, and dql
 
 * HTTPS
 
-  * install cfssl，refer to [script](scripts/install-cfssl.sh)
+  * install cfssl，refer to [script](https://github.com/Litekube/info/blob/main/aim1/scripts/install-cfssl.sh)
 
-  * generate certificates，refer to [script](scripts/generate-kine-cert.sh)
+  * generate certificates，refer to [script](https://github.com/Litekube/info/blob/main/aim1/scripts/generate-kine-cert.sh)
 
   * start server
     ```shell
