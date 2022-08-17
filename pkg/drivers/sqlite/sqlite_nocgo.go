@@ -1,3 +1,4 @@
+//go:build !cgo
 // +build !cgo
 
 package sqlite
@@ -7,8 +8,8 @@ import (
 	"database/sql"
 	"errors"
 
-	"github.com/k3s-io/kine/pkg/drivers/generic"
-	"github.com/k3s-io/kine/pkg/server"
+	"github.com/liteKube/kine/pkg/drivers/generic"
+	"github.com/liteKube/kine/pkg/server"
 )
 
 var errNoCgo = errors.New("this binary is built without CGO, sqlite is disabled")

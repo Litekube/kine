@@ -1,3 +1,4 @@
+//go:build dqlite
 // +build dqlite
 
 package dqlite
@@ -11,12 +12,11 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/canonical/go-dqlite"
 	"github.com/canonical/go-dqlite/client"
 	"github.com/canonical/go-dqlite/driver"
-	"github.com/k3s-io/kine/pkg/drivers/generic"
-	"github.com/k3s-io/kine/pkg/drivers/sqlite"
-	"github.com/k3s-io/kine/pkg/server"
+	"github.com/liteKube/kine/pkg/drivers/generic"
+	"github.com/liteKube/kine/pkg/drivers/sqlite"
+	"github.com/liteKube/kine/pkg/server"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
