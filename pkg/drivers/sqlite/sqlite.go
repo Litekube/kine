@@ -10,11 +10,10 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/k3s-io/kine/pkg/drivers/generic"
-	"github.com/k3s-io/kine/pkg/logstructured"
-	"github.com/k3s-io/kine/pkg/logstructured/sqllog"
-	"github.com/k3s-io/kine/pkg/server"
-	"github.com/mattn/go-sqlite3"
+	"github.com/liteKube/kine/pkg/drivers/generic"
+	"github.com/liteKube/kine/pkg/logstructured"
+	"github.com/liteKube/kine/pkg/logstructured/sqllog"
+	"github.com/liteKube/kine/pkg/server"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 

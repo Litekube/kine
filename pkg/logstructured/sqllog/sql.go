@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/k3s-io/kine/pkg/broadcaster"
-	"github.com/k3s-io/kine/pkg/server"
+	"github.com/liteKube/kine/pkg/broadcaster"
+	"github.com/liteKube/kine/pkg/server"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )

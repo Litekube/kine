@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/k3s-io/kine/pkg/endpoint"
-	"github.com/k3s-io/kine/pkg/version"
+	"github.com/liteKube/kine/pkg/endpoint"
+	"github.com/liteKube/kine/pkg/version"
 	"github.com/rancher/wrangler/pkg/signals"
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli"

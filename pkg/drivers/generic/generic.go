@@ -13,7 +13,7 @@ import (
 
 	"github.com/Rican7/retry/backoff"
 	"github.com/Rican7/retry/strategy"
-	"github.com/k3s-io/kine/pkg/server"
+	"github.com/liteKube/kine/pkg/server"
 	"github.com/sirupsen/logrus"
 )
 
